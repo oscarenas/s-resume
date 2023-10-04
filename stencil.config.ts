@@ -1,7 +1,9 @@
 import { Config } from '@stencil/core';
+import tailwind, { tailwindHMR } from 'stencil-tailwind-plugin';
 
 export const config: Config = {
   namespace: 'resume',
+  plugins: [tailwind(), tailwindHMR()],
   outputTargets: [
     {
       type: 'dist',
@@ -19,6 +21,6 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: "new",
+    browserHeadless: 'new',
   },
 };
