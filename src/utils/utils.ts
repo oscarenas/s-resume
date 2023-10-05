@@ -1,4 +1,4 @@
-import { KeywordClass, Skill } from './../interfaces/type.d';
+import { FooterProps, KeywordClass, Skill } from './../interfaces/type.d';
 import { Basics, HeaderProps, ProfileProps } from '../interfaces/type';
 
 export function format(first: string, middle: string, last: string): string {
@@ -30,5 +30,10 @@ export const getData = {
         return data?.find(item => item.name == 'about programming')?.keywords! as KeywordClass[];
       },
     };
+  },
+  footer(data: Basics): FooterProps {
+    const { profiles, email, name, phone } = data;
+    const { 1: github, 2: linkedin } = profiles;
+    return { github, linkedin, email, name, phone };
   },
 };

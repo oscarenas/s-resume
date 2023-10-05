@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { Interest, KeywordClass, LocationInfo, School, Work } from "./interfaces/type";
+import { Interest, KeywordClass, LocationInfo, Profile, School, Work } from "./interfaces/type";
 import { Work as Work1 } from "./components";
-export { Interest, KeywordClass, LocationInfo, School, Work } from "./interfaces/type";
+export { Interest, KeywordClass, LocationInfo, Profile, School, Work } from "./interfaces/type";
 export { Work as Work1 } from "./components";
 export namespace Components {
     interface MyComponent {
@@ -34,6 +34,13 @@ export namespace Components {
     }
     interface MyExperienceItem {
         "item": Work1;
+    }
+    interface MyFooter {
+        "email": string;
+        "github": Profile;
+        "linkedin": Profile;
+        "name": string;
+        "phone": string;
     }
     interface MyHeader {
         "email": string;
@@ -93,6 +100,12 @@ declare global {
         prototype: HTMLMyExperienceItemElement;
         new (): HTMLMyExperienceItemElement;
     };
+    interface HTMLMyFooterElement extends Components.MyFooter, HTMLStencilElement {
+    }
+    var HTMLMyFooterElement: {
+        prototype: HTMLMyFooterElement;
+        new (): HTMLMyFooterElement;
+    };
     interface HTMLMyHeaderElement extends Components.MyHeader, HTMLStencilElement {
     }
     var HTMLMyHeaderElement: {
@@ -135,6 +148,7 @@ declare global {
         "my-education-item": HTMLMyEducationItemElement;
         "my-experience": HTMLMyExperienceElement;
         "my-experience-item": HTMLMyExperienceItemElement;
+        "my-footer": HTMLMyFooterElement;
         "my-header": HTMLMyHeaderElement;
         "my-interest": HTMLMyInterestElement;
         "my-profile": HTMLMyProfileElement;
@@ -169,6 +183,13 @@ declare namespace LocalJSX {
     interface MyExperienceItem {
         "item"?: Work1;
     }
+    interface MyFooter {
+        "email"?: string;
+        "github"?: Profile;
+        "linkedin"?: Profile;
+        "name"?: string;
+        "phone"?: string;
+    }
     interface MyHeader {
         "email"?: string;
         "label"?: string;
@@ -201,6 +222,7 @@ declare namespace LocalJSX {
         "my-education-item": MyEducationItem;
         "my-experience": MyExperience;
         "my-experience-item": MyExperienceItem;
+        "my-footer": MyFooter;
         "my-header": MyHeader;
         "my-interest": MyInterest;
         "my-profile": MyProfile;
@@ -218,6 +240,7 @@ declare module "@stencil/core" {
             "my-education-item": LocalJSX.MyEducationItem & JSXBase.HTMLAttributes<HTMLMyEducationItemElement>;
             "my-experience": LocalJSX.MyExperience & JSXBase.HTMLAttributes<HTMLMyExperienceElement>;
             "my-experience-item": LocalJSX.MyExperienceItem & JSXBase.HTMLAttributes<HTMLMyExperienceItemElement>;
+            "my-footer": LocalJSX.MyFooter & JSXBase.HTMLAttributes<HTMLMyFooterElement>;
             "my-header": LocalJSX.MyHeader & JSXBase.HTMLAttributes<HTMLMyHeaderElement>;
             "my-interest": LocalJSX.MyInterest & JSXBase.HTMLAttributes<HTMLMyInterestElement>;
             "my-profile": LocalJSX.MyProfile & JSXBase.HTMLAttributes<HTMLMyProfileElement>;

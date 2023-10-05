@@ -1,5 +1,5 @@
 import { Component, State, h } from '@stencil/core';
-import { Resume, HeaderProps, ProfileProps, Work, School, Skill, KeywordClass, Interest } from '../../interfaces/type';
+import { Resume, HeaderProps, ProfileProps, Work, School, Skill, KeywordClass, Interest, FooterProps } from '../../interfaces/type';
 import { getData } from '../../utils/utils';
 
 @Component({
@@ -18,6 +18,7 @@ export class MyResume {
   @State() professionalItems: string[];
   @State() codeInfoItems: KeywordClass[];
   @State() interest: Interest[];
+  @State() footer: FooterProps;
 
   componentWillLoad() {
     fetch('https://r35um3.s3.amazonaws.com/resume.json')
@@ -37,6 +38,7 @@ export class MyResume {
     this.professionalItems = data.skills?.find(item => item.name == 'professional')?.keywords! as string[];
     this.codeInfoItems = data.skills?.find(item => item.name == 'about programming')?.keywords! as KeywordClass[];
     this.interest = data.interests;
+    this.footer = getData.footer(data.basics!);
   }
 
   render() {
@@ -53,6 +55,8 @@ export class MyResume {
         <my-skills personalItems={this.personalItems} professionalItems={this.professionalItems} codeInfoItems={this.codeInfoItems}></my-skills>
 
         <my-interest interest={this.interest}></my-interest>
+
+        <my-footer github={this.footer?.github} linkedin={this.footer?.linkedin} email={this.footer?.email} phone={this.footer?.phone} name={this.footer?.name}></my-footer>
       </div>
     );
   }

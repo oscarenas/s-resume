@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  font-family: 'Raleway';
+}
+
+.phone {
+  font-family: 'Jura';
+  font-weight: bold;
+}
