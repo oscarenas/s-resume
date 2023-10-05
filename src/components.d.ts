@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { LocationInfo, Work } from "./interfaces/type";
+import { LocationInfo, School, Work } from "./interfaces/type";
 import { Work as Work1 } from "./components";
-export { LocationInfo, Work } from "./interfaces/type";
+export { LocationInfo, School, Work } from "./interfaces/type";
 export { Work as Work1 } from "./components";
 export namespace Components {
     interface MyComponent {
@@ -23,6 +23,11 @@ export namespace Components {
           * The middle name
          */
         "middle": string;
+    }
+    interface MyEducation {
+        "school": School[];
+    }
+    interface MyEducationItem {
     }
     interface MyExperience {
         "work": Work[];
@@ -52,6 +57,18 @@ declare global {
     var HTMLMyComponentElement: {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
+    };
+    interface HTMLMyEducationElement extends Components.MyEducation, HTMLStencilElement {
+    }
+    var HTMLMyEducationElement: {
+        prototype: HTMLMyEducationElement;
+        new (): HTMLMyEducationElement;
+    };
+    interface HTMLMyEducationItemElement extends Components.MyEducationItem, HTMLStencilElement {
+    }
+    var HTMLMyEducationItemElement: {
+        prototype: HTMLMyEducationItemElement;
+        new (): HTMLMyEducationItemElement;
     };
     interface HTMLMyExperienceElement extends Components.MyExperience, HTMLStencilElement {
     }
@@ -85,6 +102,8 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "my-education": HTMLMyEducationElement;
+        "my-education-item": HTMLMyEducationItemElement;
         "my-experience": HTMLMyExperienceElement;
         "my-experience-item": HTMLMyExperienceItemElement;
         "my-header": HTMLMyHeaderElement;
@@ -106,6 +125,11 @@ declare namespace LocalJSX {
           * The middle name
          */
         "middle"?: string;
+    }
+    interface MyEducation {
+        "school"?: School[];
+    }
+    interface MyEducationItem {
     }
     interface MyExperience {
         "work"?: Work[];
@@ -130,6 +154,8 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "my-education": MyEducation;
+        "my-education-item": MyEducationItem;
         "my-experience": MyExperience;
         "my-experience-item": MyExperienceItem;
         "my-header": MyHeader;
@@ -142,6 +168,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-education": LocalJSX.MyEducation & JSXBase.HTMLAttributes<HTMLMyEducationElement>;
+            "my-education-item": LocalJSX.MyEducationItem & JSXBase.HTMLAttributes<HTMLMyEducationItemElement>;
             "my-experience": LocalJSX.MyExperience & JSXBase.HTMLAttributes<HTMLMyExperienceElement>;
             "my-experience-item": LocalJSX.MyExperienceItem & JSXBase.HTMLAttributes<HTMLMyExperienceItemElement>;
             "my-header": LocalJSX.MyHeader & JSXBase.HTMLAttributes<HTMLMyHeaderElement>;
