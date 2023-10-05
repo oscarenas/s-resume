@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  font-family: 'Raleway';
+}
+
+.work-date {
+  font-family: 'Jura';
+  font-weight: bold;
+}

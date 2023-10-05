@@ -1,4 +1,4 @@
-import { Component, Host, Prop, h } from '@stencil/core';
+import { Component, Prop, h } from '@stencil/core';
 import { LocationInfo } from '../../interfaces/type';
 
 @Component({
@@ -30,7 +30,7 @@ export class MyProfile {
                     </div>
                   </div>
                   <div>
-                    <p part="section-subtitle" class=" text-base text-gray-700  2xl:text-3xl">
+                    <p class=" text-base text-gray-700  2xl:text-3xl section-subtitle">
                       {this.location?.city}, {this.location?.country}
                     </p>
                   </div>
