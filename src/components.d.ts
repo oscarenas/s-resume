@@ -5,6 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { LocationInfo } from "./interfaces/type";
+export { LocationInfo } from "./interfaces/type";
 export namespace Components {
     interface MyComponent {
         /**
@@ -27,6 +29,12 @@ export namespace Components {
         "phone": string;
         "website": string;
     }
+    interface MyProfile {
+        "image": string;
+        "location": LocationInfo;
+        "name": string;
+        "summary": string;
+    }
     interface MyResume {
     }
 }
@@ -43,6 +51,12 @@ declare global {
         prototype: HTMLMyHeaderElement;
         new (): HTMLMyHeaderElement;
     };
+    interface HTMLMyProfileElement extends Components.MyProfile, HTMLStencilElement {
+    }
+    var HTMLMyProfileElement: {
+        prototype: HTMLMyProfileElement;
+        new (): HTMLMyProfileElement;
+    };
     interface HTMLMyResumeElement extends Components.MyResume, HTMLStencilElement {
     }
     var HTMLMyResumeElement: {
@@ -52,6 +66,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "my-header": HTMLMyHeaderElement;
+        "my-profile": HTMLMyProfileElement;
         "my-resume": HTMLMyResumeElement;
     }
 }
@@ -77,11 +92,18 @@ declare namespace LocalJSX {
         "phone"?: string;
         "website"?: string;
     }
+    interface MyProfile {
+        "image"?: string;
+        "location"?: LocationInfo;
+        "name"?: string;
+        "summary"?: string;
+    }
     interface MyResume {
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "my-header": MyHeader;
+        "my-profile": MyProfile;
         "my-resume": MyResume;
     }
 }
@@ -91,6 +113,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "my-header": LocalJSX.MyHeader & JSXBase.HTMLAttributes<HTMLMyHeaderElement>;
+            "my-profile": LocalJSX.MyProfile & JSXBase.HTMLAttributes<HTMLMyProfileElement>;
             "my-resume": LocalJSX.MyResume & JSXBase.HTMLAttributes<HTMLMyResumeElement>;
         }
     }

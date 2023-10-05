@@ -15,12 +15,12 @@ export interface Basics {
   summary: string;
   website: string;
   email: string;
-  location: Location;
+  location: LocationInfo;
   phone: string;
   profiles: Profile[];
 }
 
-export interface Location {
+export interface LocationInfo {
   city: string;
   countryCode: string;
   country: string;
@@ -79,3 +79,10 @@ export type HeaderProps = {
   email: string;
   phone: string;
 };
+
+export interface ProfileProps {
+  summary: string;
+  image: string;
+  location: LocationInfo;
+  name: string;
+}
