@@ -5,8 +5,10 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { LocationInfo } from "./interfaces/type";
-export { LocationInfo } from "./interfaces/type";
+import { LocationInfo, Work } from "./interfaces/type";
+import { Work as Work1 } from "./components";
+export { LocationInfo, Work } from "./interfaces/type";
+export { Work as Work1 } from "./components";
 export namespace Components {
     interface MyComponent {
         /**
@@ -21,6 +23,12 @@ export namespace Components {
           * The middle name
          */
         "middle": string;
+    }
+    interface MyExperience {
+        "work": Work[];
+    }
+    interface MyExperienceItem {
+        "item": Work1;
     }
     interface MyHeader {
         "email": string;
@@ -45,6 +53,18 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLMyExperienceElement extends Components.MyExperience, HTMLStencilElement {
+    }
+    var HTMLMyExperienceElement: {
+        prototype: HTMLMyExperienceElement;
+        new (): HTMLMyExperienceElement;
+    };
+    interface HTMLMyExperienceItemElement extends Components.MyExperienceItem, HTMLStencilElement {
+    }
+    var HTMLMyExperienceItemElement: {
+        prototype: HTMLMyExperienceItemElement;
+        new (): HTMLMyExperienceItemElement;
+    };
     interface HTMLMyHeaderElement extends Components.MyHeader, HTMLStencilElement {
     }
     var HTMLMyHeaderElement: {
@@ -65,6 +85,8 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
+        "my-experience": HTMLMyExperienceElement;
+        "my-experience-item": HTMLMyExperienceItemElement;
         "my-header": HTMLMyHeaderElement;
         "my-profile": HTMLMyProfileElement;
         "my-resume": HTMLMyResumeElement;
@@ -85,6 +107,12 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface MyExperience {
+        "work"?: Work[];
+    }
+    interface MyExperienceItem {
+        "item"?: Work1;
+    }
     interface MyHeader {
         "email"?: string;
         "label"?: string;
@@ -102,6 +130,8 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
+        "my-experience": MyExperience;
+        "my-experience-item": MyExperienceItem;
         "my-header": MyHeader;
         "my-profile": MyProfile;
         "my-resume": MyResume;
@@ -112,6 +142,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "my-experience": LocalJSX.MyExperience & JSXBase.HTMLAttributes<HTMLMyExperienceElement>;
+            "my-experience-item": LocalJSX.MyExperienceItem & JSXBase.HTMLAttributes<HTMLMyExperienceItemElement>;
             "my-header": LocalJSX.MyHeader & JSXBase.HTMLAttributes<HTMLMyHeaderElement>;
             "my-profile": LocalJSX.MyProfile & JSXBase.HTMLAttributes<HTMLMyProfileElement>;
             "my-resume": LocalJSX.MyResume & JSXBase.HTMLAttributes<HTMLMyResumeElement>;
