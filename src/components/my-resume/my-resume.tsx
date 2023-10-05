@@ -1,5 +1,5 @@
 import { Component, State, h } from '@stencil/core';
-import { Resume, HeaderProps, ProfileProps, Work, School } from '../../interfaces/type';
+import { Resume, HeaderProps, ProfileProps, Work, School, Skill, KeywordClass } from '../../interfaces/type';
 import { getData } from '../../utils/utils';
 
 @Component({
@@ -13,6 +13,10 @@ export class MyResume {
   @State() profile!: ProfileProps;
   @State() work!: Work[];
   @State() school!: School[];
+  @State() skills!: Skill[];
+  @State() personalItems: string[];
+  @State() professionalItems: string[];
+  @State() codeInfoItems: KeywordClass[];
 
   componentWillLoad() {
     fetch('https://r35um3.s3.amazonaws.com/resume.json')
@@ -27,6 +31,10 @@ export class MyResume {
     this.profile = getData.profile(data.basics);
     this.work = data.work;
     this.school = data.education;
+    this.skills = data.skills;
+    this.personalItems = data.skills?.find(item => item.name == 'personal')?.keywords! as string[];
+    this.professionalItems = data.skills?.find(item => item.name == 'professional')?.keywords! as string[];
+    this.codeInfoItems = data.skills?.find(item => item.name == 'about programming')?.keywords! as KeywordClass[];
   }
 
   render() {
@@ -39,6 +47,8 @@ export class MyResume {
         <my-experience work={this.work}></my-experience>
 
         <my-education school={this.school}></my-education>
+
+        <my-skills personalItems={this.personalItems} professionalItems={this.professionalItems} codeInfoItems={this.codeInfoItems}></my-skills>
       </div>
     );
   }

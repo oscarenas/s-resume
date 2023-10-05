@@ -5,9 +5,9 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { LocationInfo, School, Work } from "./interfaces/type";
+import { KeywordClass, LocationInfo, School, Work } from "./interfaces/type";
 import { Work as Work1 } from "./components";
-export { LocationInfo, School, Work } from "./interfaces/type";
+export { KeywordClass, LocationInfo, School, Work } from "./interfaces/type";
 export { Work as Work1 } from "./components";
 export namespace Components {
     interface MyComponent {
@@ -49,6 +49,14 @@ export namespace Components {
         "summary": string;
     }
     interface MyResume {
+    }
+    interface MySkillItem {
+        "codeList": KeywordClass[];
+    }
+    interface MySkills {
+        "codeInfoItems": KeywordClass[];
+        "personalItems": string[];
+        "professionalItems": string[];
     }
 }
 declare global {
@@ -100,6 +108,18 @@ declare global {
         prototype: HTMLMyResumeElement;
         new (): HTMLMyResumeElement;
     };
+    interface HTMLMySkillItemElement extends Components.MySkillItem, HTMLStencilElement {
+    }
+    var HTMLMySkillItemElement: {
+        prototype: HTMLMySkillItemElement;
+        new (): HTMLMySkillItemElement;
+    };
+    interface HTMLMySkillsElement extends Components.MySkills, HTMLStencilElement {
+    }
+    var HTMLMySkillsElement: {
+        prototype: HTMLMySkillsElement;
+        new (): HTMLMySkillsElement;
+    };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
         "my-education": HTMLMyEducationElement;
@@ -109,6 +129,8 @@ declare global {
         "my-header": HTMLMyHeaderElement;
         "my-profile": HTMLMyProfileElement;
         "my-resume": HTMLMyResumeElement;
+        "my-skill-item": HTMLMySkillItemElement;
+        "my-skills": HTMLMySkillsElement;
     }
 }
 declare namespace LocalJSX {
@@ -152,6 +174,14 @@ declare namespace LocalJSX {
     }
     interface MyResume {
     }
+    interface MySkillItem {
+        "codeList"?: KeywordClass[];
+    }
+    interface MySkills {
+        "codeInfoItems"?: KeywordClass[];
+        "personalItems"?: string[];
+        "professionalItems"?: string[];
+    }
     interface IntrinsicElements {
         "my-component": MyComponent;
         "my-education": MyEducation;
@@ -161,6 +191,8 @@ declare namespace LocalJSX {
         "my-header": MyHeader;
         "my-profile": MyProfile;
         "my-resume": MyResume;
+        "my-skill-item": MySkillItem;
+        "my-skills": MySkills;
     }
 }
 export { LocalJSX as JSX };
@@ -175,6 +207,8 @@ declare module "@stencil/core" {
             "my-header": LocalJSX.MyHeader & JSXBase.HTMLAttributes<HTMLMyHeaderElement>;
             "my-profile": LocalJSX.MyProfile & JSXBase.HTMLAttributes<HTMLMyProfileElement>;
             "my-resume": LocalJSX.MyResume & JSXBase.HTMLAttributes<HTMLMyResumeElement>;
+            "my-skill-item": LocalJSX.MySkillItem & JSXBase.HTMLAttributes<HTMLMySkillItemElement>;
+            "my-skills": LocalJSX.MySkills & JSXBase.HTMLAttributes<HTMLMySkillsElement>;
         }
     }
 }
