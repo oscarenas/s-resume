@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.date {
+  font-family: 'Jura';
+  font-weight: bold;
+}
+
+.institution,
+.study-type {
+  font-family: 'Raleway';
+}

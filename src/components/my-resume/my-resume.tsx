@@ -1,5 +1,5 @@
 import { Component, State, h } from '@stencil/core';
-import { Resume, HeaderProps, ProfileProps, Work } from '../../interfaces/type';
+import { Resume, HeaderProps, ProfileProps, Work, School } from '../../interfaces/type';
 import { getData } from '../../utils/utils';
 
 @Component({
@@ -12,6 +12,7 @@ export class MyResume {
   @State() header!: HeaderProps;
   @State() profile!: ProfileProps;
   @State() work!: Work[];
+  @State() school!: School[];
 
   componentWillLoad() {
     fetch('https://r35um3.s3.amazonaws.com/resume.json')
@@ -25,6 +26,7 @@ export class MyResume {
     this.header = getData.header(data.basics);
     this.profile = getData.profile(data.basics);
     this.work = data.work;
+    this.school = data.education;
   }
 
   render() {
@@ -35,6 +37,8 @@ export class MyResume {
         <my-profile summary={this.profile?.summary} image={this.profile?.image} location={this.profile?.location!} name={this.profile?.name}></my-profile>
 
         <my-experience work={this.work}></my-experience>
+
+        <my-education school={this.school}></my-education>
       </div>
     );
   }
