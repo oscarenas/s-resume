@@ -86,3 +86,11 @@ export interface ProfileProps {
   location: LocationInfo;
   name: string;
 }
+
+export interface FooterProps {
+  github: Profile;
+  linkedin: Profile;
+  email: string;
+  phone: string;
+  name: string;
+}
